@@ -1,0 +1,17 @@
+=form_tag "/finish_sign_up", method: :post do 
+	%ul
+		-@user.errors.full_messages.each do |error|
+			%li 
+				=error
+	%div
+		%label{for: "user[name]"} Nombre
+		=text_field_tag "user[name]", @user.name
+	%div
+		- #input name value
+		%label{for: "user[username]"} Nombre de usuario
+		=text_field_tag "user[username]", @user.username
+	%div
+		%label{for: "user[email]"} Email
+		=email_field_tag "user[email]", @user.email, required: true
+	%div
+		=submit_tag "Completar registro"
