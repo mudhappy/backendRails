@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   post "/finish_sign_up", to: "users/omniauth_callbacks#finish_sign_up"
 
-  root 'main#home'
+  authenticated :user do
+  	root 'main#home'
+  end
+
+  unauthenticated :user do
+  	root 'main#unregistered'
+  end
 
 end
